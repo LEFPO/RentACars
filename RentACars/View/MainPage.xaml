@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentACars.View.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key= "TestButton" TargetType ="Button">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="FontSize" Value="12" />
+
+                <Setter Property="BackgroundColor" Value="Grey"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label
+                x:Name="lblDebug"
+                Text="debug Text"
+                Style="{StaticResource LabelDebug}"
+                />
+
+            <Button
+                x:Name="ButtonTestVehicule"
+                Text="TestVehicule"
+                Clicked="ButtonTestVehicule_Clicked"
+                Style="{StaticResource TestButton}"
+            />
+
+            <Button
+                x:Name="ButtonDataAccessCSVFiles"
+                Text="DataAccessCSVFiles"
+                Clicked="ButtonDataAccessCSVFiles_Clicked"
+                Style="{StaticResource TestButton}"
+            />
+
+            <Button
+                x:Name="ButtonDataAccessJSONFiles"
+                Text="DataAccessJSONFiles"
+                Clicked="ButtonDataAccessJSONFiles_Clicked"
+                Style="{StaticResource TestButton}"
+            />
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label
+                Text="Hello, World!"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Welcome to &#10;.NET Multi-platform App UI"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

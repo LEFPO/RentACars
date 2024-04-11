@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="RentACars.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:RentACars"
+    xmlns:View="clr-namespace:RentACars.View"
+    Shell.FlyoutBehavior="Disabled"
+    Title="RentACars">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:View.MainPage}"
+        Route="MainPage" />
+
+</Shell>
