@@ -27,7 +27,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.RowSpan="2"
-                    Source="{Binding Marque}"
+                    Source="{Binding PictureName}"
                     Aspect="AspectFill"
                     HeightRequest="80"
                     WidthRequest="80" />
@@ -187,6 +187,12 @@
                      Command="{Binding TestBindingChangePropertiesCommand}"
                      Style="{StaticResource TestButton}"
                      />
+                <Button
+                    x:Name="PageSuivante"
+                    Text="Page Suivante"
+                    Clicked="PageSuivante_Clicked"
+                    Style="{StaticResource TestButton}"
+                />
 
             </VerticalStackLayout>
         </Grid>

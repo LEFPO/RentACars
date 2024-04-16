@@ -7,7 +7,7 @@
         private double _longueur;
         private double _capacite;
 
-        public Truck(string immat, string marque, string model, string year, bool dispo, double hauteur, double largeur, double longueur, double capacite) : base(immat, marque, model, year, dispo)
+        public Truck(string immat, string marque, string model, string year, bool dispo,string pictureName ,double hauteur, double largeur, double longueur, double capacite) : base(immat, marque, model, year, dispo, pictureName)
         {
             Hauteur = hauteur;
             Largeur = largeur;

@@ -7,7 +7,8 @@
       "Marque": "Renault",
       "Model": "Megane",
       "Year": "2020",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "renault_megane.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -15,7 +16,8 @@
       "Marque": "Renault",
       "Model": "Clio",
       "Year": "2019",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "renault_clio.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -23,7 +25,8 @@
       "Marque": "Renault",
       "Model": "Esapce",
       "Year": "2022",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "renault_espace.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -31,7 +34,8 @@
       "Marque": "Renault",
       "Model": "Laguna",
       "Year": "2012",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "renault_laguna.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -39,7 +43,8 @@
       "Marque": "Renault",
       "Model": "Arkana",
       "Year": "2023",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "renault_arkana.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -47,7 +52,8 @@
       "Marque": "Opel",
       "Model": "Vivaro",
       "Year": "2005",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "opel_vivaro.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -55,7 +61,8 @@
       "Marque": "Renault",
       "Model": "Master",
       "Year": "2004",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "renault_master.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -63,7 +70,8 @@
       "Marque": "Renault",
       "Model": "Traffic",
       "Year": "2018",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "renault_traffic.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -71,7 +79,8 @@
       "Marque": "Nissan",
       "Model": "NV200",
       "Year": "2015",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "nissan_nv200.jpg"
     },
     {
       "$type": "RentACars.Auto.Vehicule, RentACars",
@@ -79,7 +88,8 @@
       "Marque": "Mercedes",
       "Model": "Sprinter",
       "Year": "2022",
-      "Dispo": true
+      "Dispo": true,
+      "PictureName": "mercedes_sprinter.jpg"
     }
   ]
 }

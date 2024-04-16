@@ -11,7 +11,7 @@ namespace RentACars.Auto
         private string _permisrequis;
         private string _couleur;
 
-        public Cars(string immat, string marque, string model, string year, bool dispo, string chassis, string carburant, string motorisation, string permisrequis, string couleur) : base(immat, marque, model, year, dispo)
+        public Cars(string immat, string marque, string model, string year, bool dispo, string pictureName, string chassis, string carburant, string motorisation, string permisrequis, string couleur) : base(immat, marque, model, year, dispo, pictureName)
         {
             Chassis = chassis;
             Carburant = carburant;

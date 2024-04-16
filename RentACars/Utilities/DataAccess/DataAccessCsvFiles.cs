@@ -26,9 +26,9 @@ namespace RentACars.Utilities.DataAccess
             switch (fields[0])
             {
             case "CARS":
-                return new Cars(immat: fields[1], marque: fields[2], model: fields[3], year: fields[4], dispo: bool.Parse(fields[5]), chassis: fields[6], carburant: fields[7], motorisation: fields[8], permisrequis: fields[9], couleur: fields[10]);
+                return new Cars(immat: fields[1], marque: fields[2], model: fields[3], year: fields[4], dispo: bool.Parse(fields[5]), chassis: fields[6], carburant: fields[7], motorisation: fields[8], permisrequis: fields[9], couleur: fields[10], pictureName: fields[11]);
             case "TRUCKS":
-                return new Truck(immat: fields[1], marque: fields[2], model: fields[3], year: fields[4], dispo: bool.Parse(fields[5]), hauteur: double.Parse(fields[11]), largeur: double.Parse(fields[12]), longueur: double.Parse(fields[13]),capacite : double.Parse(fields[14]));
+                return new Truck(immat: fields[1], marque: fields[2], model: fields[3], year: fields[4], dispo: bool.Parse(fields[5]), pictureName: fields[11], hauteur: double.Parse(fields[12]), largeur: double.Parse(fields[13]), longueur: double.Parse(fields[14]),capacite : double.Parse(fields[15]));
             default:
                 return null;
             }

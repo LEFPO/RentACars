@@ -81,4 +81,10 @@
 	  <Folder Include="Utilities\EntriesValidations\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="View\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
