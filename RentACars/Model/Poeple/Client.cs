@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RentACars.Poeple
+namespace RentACars.Model.Poeple
 {
     public class Client
     {

@@ -57,17 +57,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+	  <None Remove="Resources\Images\mercedes_sprinter.jpg" />
+	  <None Remove="Resources\Images\nissan_nv200.jpg" />
+	  <None Remove="Resources\Images\opel_vivaro.jpg" />
+	  <None Remove="Resources\Images\renault_arkana.jpg" />
+	  <None Remove="Resources\Images\renault_clio.jpg" />
+	  <None Remove="Resources\Images\renault_espace.jpg" />
+	  <None Remove="Resources\Images\renault_laguna.jpg" />
+	  <None Remove="Resources\Images\renault_master.jpg" />
+	  <None Remove="Resources\Images\renault_megane.jpg" />
+	  <None Remove="Resources\Images\renault_traffic.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.20" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.20" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Model\" />
-	  <Folder Include="Utilities\Services\" />
 	  <Folder Include="Utilities\EntriesValidations\" />
-	  <Folder Include="ViewModel\" />
 	</ItemGroup>
 
 </Project>

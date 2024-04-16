@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RentACars.Utilities.Interfaces
 {
-    internal interface IDataAccess
+    public interface IDataAccess
     {
         /// <summary>
         /// Access string to the external source (file path, connection string ...)

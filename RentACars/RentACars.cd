@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RentACars.Auto.Cars">
+    <Position X="5.75" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gQAkABAAAAAIABAAAFAAAIAAAQAAAAAAEAAAAAAAAAE=</HashCode>
+      <FileName>Auto\Cars.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Auto.Truck">
+    <Position X="9.25" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIGAkAAAAAAAAAAAAAAAJAQAAYAAAAQAAAAAIAAAAAA=</HashCode>
+      <FileName>Auto\Truck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Auto.Vehicule" Collapsed="true">
+    <Position X="8" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAEBAIAAAAAAgAAQAIAAAAAAAAAAQgAAAhACAA=</HashCode>
+      <FileName>Auto\Vehicule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Auto.VehiculesCollection">
+    <Position X="12.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAEAAAAAAAQAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Auto\VehiculesCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Poeple.Client">
+    <Position X="15.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABAAAAAAAIAMEAQAAAAAAAAAgAAAAAQAAAAQA=</HashCode>
+      <FileName>Poeple\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
