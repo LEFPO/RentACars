@@ -25,5 +25,13 @@ namespace RentACars.Utilities.DataAccess.Files
         /// <param name="concern"></param>
         /// <returns></returns>
         public string? GetFilePathByCodeFunction(string concern) => this.Find(df => df.Concern.Equals(concern))?.FullPath;
+
+        /// <summary>
+        /// get value (fileName) for a specific function ("ITEMS","TABLES","BOOKINGS",...)
+        /// RESTAURANT_NAME,Iram Ps Food Service  => GetValueByCodeFunction(RESTAURANT_NAME) will return "Iram Ps Food Service"
+        /// </summary>
+        /// <param name="concern"></param>
+        /// <returns></returns>
+        public string? GetValueByCodeFunction(string concern) => this.Find(df => df.Concern.Equals(concern))?.FileName;
     }
 }

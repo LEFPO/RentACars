@@ -1,0 +1,12 @@
+﻿Type;Id;Picture_name;Brand;Model;Color;Plate;Available;Chassis_number;Motorization;Year_of_launch;Length;Width;Speed;Fuel;Power;Price_of_day;Vat_rate;Driver_license;Height;Capacity
+Car;1;renault_megane.jpg;Renault;Megane;Noir;1-FJA-574;true;VF1JP0YB25V481693;1.5DCI;2020;4.35;1.81;190;Diesel;110;70;21;B;;
+Car;2;renault_clio.jpg;Renault;Clio;Jaune;1-BHX-921;true;VF1RFDYAB23872956;1.2TCE;2019;4.05;1.73;185;Essence;120;60;21;B;;
+Car;3;renault_espace.jpg;Renault;Esapce;Vert;1-KZG-305;true;VF1LFLYF56789012;1.8TCE;2022;4.85;1.89;210;Essence;225;85;21;B;;
+Car;4;renault_laguna.jpg;Renault;Laguna;Orange;1-QRP-867;true;VF1JF5YB25V481693;2.0DCI;2012;4.70;1.78;200;Diesel;150;55;21;B;;
+Car;5;renault_arkana.jpg;Renault;Arkana;Violet;1-LWM-429;true;VF1ZDFYAB23872956;1.6TCE;2023;4.57;1.82;195;Hybride;140;90;21;B;;
+Truck;6;opel_vivaro.jpg;Opel;Vivaro;;1-DPC-123;true;W0L0XEPH758123456;2.0CDTI;2005;4.998;1.956;160;Diesel;90;45;21;;1.97;8.6
+Truck;7;renault_master.jpg;Renault;Master;;1-RVT-789;true;VF1VFACH634567890;2.3DCI;2004;4.999;1.952;155;Diesel;100;50;21;;2.30;12.4
+Truck;8;renault_traffic.jpg;Renault;Traffic;;1-NYX-456;true;VF1JLBHB664567123;2.0DCI;2018;5.048;2.070;170;Diesel;140;75;21;;1.97;8.9
+Truck;9;nissan_nv200.jpg;Nissan;NV200;;1-GKM-654;true;VSKNV20C000345678;1.5DCI;2015;4.400;1.755;150;Diesel;110;50;21;;1.86;4.2
+Truck;10;mercedes_sprinter.jpg;Mercedes;Sprinter;;1-VJB-321;true;WDB90661345678901;3.0CDI;2022;5.267;1.924;180;Diesel;190;95;21;;2.60;15.5
+

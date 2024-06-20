@@ -1,38 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="RentACars.Auto.Cars">
-    <Position X="5.75" Y="2" Width="2" />
+    <Position X="0.5" Y="5.75" Width="2" />
     <TypeIdentifier>
       <HashCode>gQAkABAAAAAIABAAAFAAAIAAAQAAAAAAEAAAAAAAAAE=</HashCode>
       <FileName>Auto\Cars.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RentACars.Auto.Truck">
-    <Position X="9.25" Y="2" Width="2" />
+    <Position X="5.5" Y="6.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AIGAkAAAAAAAAAAAAAAAJAQAAYAAAAQAAAAAIAAAAAA=</HashCode>
       <FileName>Auto\Truck.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RentACars.Auto.Vehicule" Collapsed="true">
-    <Position X="8" Y="0.5" Width="2" />
+  <Class Name="RentACars.Auto.Vehicule">
+    <Position X="3.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAEBAIAAAAAAgAAQAIAAAAAAAAAAQgAAAhACAA=</HashCode>
+      <HashCode>AAAAAQgEBAIAABAAIgAAQAIAgAAAAIAEAQgAAAhACAA=</HashCode>
       <FileName>Auto\Vehicule.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="RentACars.Auto.VehiculesCollection">
-    <Position X="12.75" Y="0.5" Width="2" />
+    <Position X="7" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAEAAAAAAAQAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Auto\VehiculesCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RentACars.Poeple.Client">
-    <Position X="15.5" Y="0.75" Width="1.5" />
+  <Class Name="RentACars.Model.People.Manager">
+    <Position X="7.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEABAAAAAAAIAMEAQAAAAAAAAAgAAAAAQAAAAQA=</HashCode>
-      <FileName>Poeple\Client.cs</FileName>
+      <HashCode>AAQAAAAAAAAAoAEAAEQIAAAAAIACEIACAAAUKIAAACA=</HashCode>
+      <FileName>Model\Poeple\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Model.People.Person">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECEEACACAAAACQAEFAAAAAAAAAgAgAAAAAAgAACEk=</HashCode>
+      <FileName>Model\Poeple\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Model.People.StaffMember">
+    <Position X="9.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAABAAAAEAAAAAAIQAAAAEAAACAAAAAkQAoAA=</HashCode>
+      <FileName>Model\Poeple\StaffMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Dispo.Checkin" Collapsed="true">
+    <Position X="15.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dispo\Checkin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Dispo.Checkout" Collapsed="true">
+    <Position X="15.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dispo\Checkout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RentACars.Dispo.Location" Collapsed="true">
+    <Position X="15.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dispo\Location.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

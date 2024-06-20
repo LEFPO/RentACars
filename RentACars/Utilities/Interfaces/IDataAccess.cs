@@ -22,9 +22,9 @@ namespace RentACars.Utilities.Interfaces
         /// retrieve items informations from the external source
         /// </summary>
         /// <returns>an ItemsCollection </returns>
-        VehiculesCollection GetAllVehicules();
+        VehiclesCollection GetAllVehicles();
         
-      
+        bool UpdateVehicles(VehiclesCollection vehicle);
 
     }
 }

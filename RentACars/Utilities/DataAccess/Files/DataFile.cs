@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentACars.Auto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,8 @@ namespace RentACars.Utilities.DataAccess.Files
         /// directory must be the same for all files => static property
         /// </summary>
         public static string FilesPathDir { get; set; }
+
+
 
     }
 }

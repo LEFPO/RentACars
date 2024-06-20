@@ -17,34 +17,39 @@ namespace RentACars.Utilities.DataAccess
     {
 
         public DataAccessJsonFile(string filePath) : base(filePath)
-        { 
+        {
         }
         public DataAccessJsonFile(string filePath, string[] extensions) : base(filePath, extensions)
         {
 
         }
 
-        public DataAccessJsonFile(DataFilesManager dfm) :base(dfm)
+        public DataAccessJsonFile(DataFilesManager dfm) : base(dfm)
         {
-            
+
         }
+        public DataAccessJsonFile(DataFilesManager dfm, IAlertService alertService) : base(dfm, alertService)
+        {
+
+        }
+
         /// <summary>
         /// retrieve all items object in an ItemCollection from json File Code ITEMS.
         /// </summary>
         /// <returns></returns>
-        public override VehiculesCollection GetAllVehicules()
+        public override VehiclesCollection GetAllVehicles()
         {
 
-            AccessPath = DataFilesManager.DataFiles.GetFilePathByCodeFunction("VEHICULE");
+            AccessPath = DataFilesManager.DataFiles.GetFilePathByCodeFunction("VEHICLE");
             if (IsValidAccessPath)
             {
                 string jsonFile = File.ReadAllText(AccessPath);
-                VehiculesCollection? its = new VehiculesCollection();
+                VehiclesCollection? its = new VehiclesCollection();
 
                 //settings are necessary to get also specific properties of the derivated class
                 //and not only common properties of the base class (User)
                 JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-                its = JsonConvert.DeserializeObject<VehiculesCollection>(jsonFile, settings);
+                its = JsonConvert.DeserializeObject<VehiclesCollection>(jsonFile, settings);
                 return its;
             }
             else
@@ -54,13 +59,14 @@ namespace RentACars.Utilities.DataAccess
             }
         }//end GetAllItems
 
+
         /// <summary>
         /// update json source file from the item collection
         /// </summary>
         /// <param name="uc"></param>
-        public  void UpdateAllVehiculesDatas(VehiculesCollection ve)
+        public void UpdateVehicules(VehiclesCollection ve)
         {
-            AccessPath = DataFilesManager.DataFiles.GetFilePathByCodeFunction("VEHICULE");
+            AccessPath = DataFilesManager.DataFiles.GetFilePathByCodeFunction("VEHICLE");
             if (IsValidAccessPath)
             {
                 JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
@@ -73,7 +79,22 @@ namespace RentACars.Utilities.DataAccess
                 Console.WriteLine("UpdateAllUsersDatas error can't update datasource file");
             }
         }
-
-                                
+        public override bool UpdateVehicles(VehiclesCollection vehicle)
+        {
+            AccessPath = DataFilesManager.DataFiles.GetFilePathByCodeFunction("VEHICLE");
+            if (IsValidAccessPath)
+            {
+                JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+                string json = JsonConvert.SerializeObject(vehicle, Formatting.Indented, settings);
+                File.WriteAllText(AccessPath, json);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("UpdateAllCustomersDatas error can't update datasource file");
+                return false;
+            }
+        }
     }
+
 }

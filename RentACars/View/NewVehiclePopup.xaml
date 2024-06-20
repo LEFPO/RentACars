@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="RentACars.View.NewVehiclePopup"
+            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <Frame BorderColor="SteelBlue">
+        <VerticalStackLayout>
+            <Label
+                 Text="Vehicule"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center"
+                 />
+            <Label
+                 Text="Marque :"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start" 
+                 />
+            <Entry
+                 Text="{Binding VehiclePopupDisplayed.Brand}"
+                 FontAttributes ="Bold"
+                 HorizontalOptions="Start"
+                 WidthRequest="250"
+                />
+            <Label
+                 Text="Model :"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 />
+            <Entry
+                 Text="{Binding VehiclePopupDisplayed.Model}"
+                 FontAttributes ="Bold"
+                 HorizontalOptions="Start"
+                 WidthRequest="250"
+                 />
+            <Label
+                 Text="Plaque :"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 />
+            <Entry
+                 Text="{Binding VehiclePopupDisplayed.Plate}"
+                 FontAttributes ="Bold"
+                 HorizontalOptions="Start"
+                 WidthRequest="250"
+                 />
+            <Label
+                 Text="Numéro de chassis :"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 />
+            <Entry
+                 Text="{Binding VehiclePopupDisplayed.Chassis_number}"
+                 FontAttributes ="Bold"
+                 HorizontalOptions="Start"
+                 WidthRequest="250"
+                 />
+            <Label
+                 Text="Louable :"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 />
+            <CheckBox
+                 IsChecked="{Binding VehiclePopupDisplayed.Available}"
+                 />
+            <Label
+                 Text="Couleur :"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 />
+            <Entry
+                 Text="{Binding VehiclePopupDisplayed.Color}"
+                 FontAttributes ="Bold"
+                 HorizontalOptions="Start"
+                 WidthRequest="250"
+                 />
+            <Label
+                 Text="Année de mise en circulation :"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Start"
+                 />
+            <Entry
+                 Text="{Binding VehiclePopupDisplayed;.Year_of_launch}"
+                 FontAttributes ="Bold"
+                 HorizontalOptions="Start"
+                 WidthRequest="250"
+                 />
+            <Button
+                 Margin="0,10,0,0"
+                 Text="Ajouter le vehicule" 
+                 IsVisible="{Binding IsNewVehicleAction}"
+                 Command="{Binding AddNewSVehicleCommand}" 
+                 WidthRequest="150"
+                 BackgroundColor="Grey"
+                 VerticalOptions="Center"
+                 HeightRequest="20"
+                 />
+            <Button
+                 Margin="0,10,0,0"
+                 x:Name="buttonClose"
+                 Text="Fermer"
+                 Clicked="buttonClose_Clicked"
+                 WidthRequest="150"
+                 BackgroundColor="Grey"
+                 HorizontalOptions="Center"
+                 HeightRequest="20"
+                 />
+        </VerticalStackLayout>
+    </Frame>
+</toolkit:Popup>

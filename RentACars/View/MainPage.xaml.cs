@@ -37,7 +37,7 @@ namespace RentACars.View
 
         private void ButtonTestVehicule_Clicked(object sender, EventArgs e)
         {
-            //Cars FirstVehicule = new Cars("1-EAU-288","Renault","Megane","2020",true,"VF1JP0YB25V481693","Diesel","1.5DCI","A","Noir");
+            Car FirstVehicule = new Car(1, "renault_megane.jpg", "Renault", "Megane", "Noir", "1-EAU-288", true, "VF1JP0YB25V481693", "1.5DCI", "2020", 4.35, 1.81, 190, "Diesel", 110, 70, 21, "B");
             
             lblDebug.Text = "Véhicule Crée";
             
@@ -48,11 +48,11 @@ namespace RentACars.View
             string CONFIG_FILE = @"C:\Users\Ai\source\repos\RentACars\RentACars\Configuration\Datas\Config.txt";
             DataFilesManager dataFilesStaffMember = new DataFilesManager(CONFIG_FILE);
             DataAccessCsvFiles daCsv = new DataAccessCsvFiles(dataFilesStaffMember);
-            VehiculesCollection vehicule = daCsv.GetAllVehicules();
-            vehicule.ToList().ForEach(st => lblDebug.Text += $"\n Immat : {st.Immat} - Marque {st.Marque} ");
+            VehiclesCollection vehicule = daCsv.GetAllVehicles();
+            vehicule.ToList().ForEach(st => lblDebug.Text += $"\n Immat : {st.Plate} - Marque {st.Brand} ");
             
-            VehiculesCollection vehicules = daCsv.GetAllVehicules();
-            vehicule.ToList().ForEach(c => lblDebug.Text += $"\n Immat:{c.Immat} - Marque{c.Marque}{c.Model}");
+            VehiclesCollection vehicules = daCsv.GetAllVehicles();
+            vehicule.ToList().ForEach(c => lblDebug.Text += $"\n Immat:{c.Plate} - Marque{c.Brand}{c.Model}");
         }
 
         private void ButtonDataAccessJSONFiles_Clicked(object sender, EventArgs e)
@@ -60,17 +60,12 @@ namespace RentACars.View
             string CONFIG_FILE = @"C:\Users\Ai\source\repos\RentACars\RentACars\Configuration\Datas\ConfigJson.txt";
             DataFilesManager dataFilesManager = new DataFilesManager(CONFIG_FILE);
             DataAccessJsonFile da = new DataAccessJsonFile(dataFilesManager);
-            VehiculesCollection vehicule = da.GetAllVehicules();
-            vehicule.ToList().ForEach(it => lblDebug.Text += $"\n Immat: {it.Immat} - Marque {it.Model}");
-            vehicule[0].Immat = "C'est une blague";
+            VehiclesCollection vehicule = da.GetAllVehicles();
+            vehicule.ToList().ForEach(it => lblDebug.Text += $"\n Immat: {it.Plate} - Marque {it.Model}");
+            vehicule[0].Plate = "C'est une blague";
             vehicule[5].Model = "BlaBla"; //changement du prix du 6ème item
                                        //sauvegarde des données 
             //da.UpdateAllVehiculesDatas(vehicule);
-        }
-
-        private async void PageSuivante_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new LoginPage());
         }
 
     }

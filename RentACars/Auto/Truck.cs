@@ -1,92 +1,63 @@
-﻿namespace RentACars.Auto
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RentACars.Auto
 {
-    public class Truck : Vehicule
+    public class Truck : Vehicle
     {
-        private double _hauteur;
-        private double _largeur;
-        private double _longueur;
-        private double _capacite;
-
-        public Truck(string immat, string marque, string model, string year, bool dispo,string pictureName ,double hauteur, double largeur, double longueur, double capacite) : base(immat, marque, model, year, dispo, pictureName)
+        private double _height;
+        private double _capacity;
+        public Truck(int id, string picture_name, string brand, string model, string color, string plate, bool available, string chassis_number, string motorization, string year_of_launch, double length, double width, int speed, string fuel, int power, double price_of_day, double vat_rat, double height, double capacity) : base(id, picture_name, brand, model, color, plate, available, chassis_number, motorization, year_of_launch, length, width, speed, fuel, power, price_of_day, vat_rat)
         {
-            Hauteur = hauteur;
-            Largeur = largeur;
-            Longueur = longueur;
-            Capacite = capacite;
+            Height = height;
+            Capacity = capacity;
         }
 
-        public double Hauteur
-        {
-            get { return _hauteur; }
+        public double Height 
+        { 
+            get 
+            { 
+                return _height; 
+            } 
             set
             {
-                if (CheckHauteur(value))
+                if (CheckHeigth(value))
                 {
-                    _hauteur = value;
+                    _height = value;
+                    OnPropertyChanged(nameof(Height));
                 }
-            }
+            } 
         }
-        public double Largeur
-        {
-            get { return _largeur; }
-            set
+        public double Capacity 
+        { 
+            get 
+            { 
+                return _capacity; 
+            } 
+            set 
             {
-                if (CheckLargeur(value))
+                if (CheckCapacity(value))
                 {
-                    _largeur = value;
-                }
-            }
-        }
-        public double Longueur
-        {
-            get { return _longueur; }
-            set
-            {
-                if (CheckLongueur(value))
-                {
-                    _longueur = value;
-                }
-            }
-        }
-        public double Capacite
-        {
-            get { return _capacite; }
-            set
-            {
-                if (CheckCapacite(value))
-                {
-                    _capacite = value;
+                    _capacity = value;
+                    OnPropertyChanged(nameof(Capacity));
                 }
             }
         }
 
-        private static bool CheckHauteur(double hauteur)
+        private static bool CheckHeigth(double longueur)
         {
-            if (hauteur < 1.8 || hauteur > 2.2)
+            if (longueur <= 1.8 || longueur >= 2.2)
             {
                 return false;
             }
             return true;
         }
-        private static bool CheckLargeur(double largeur)
+        private static bool CheckCapacity(double capacity)
         {
-            if (largeur < 1.7 || largeur > 2.0)
-            {
-                return false;
-            }
-            return true;
-        }
-        private static bool CheckLongueur(double longueur)
-        {
-            if (longueur < 4.5 || longueur > 6.5)
-            {
-                return false;
-            }
-            return true;
-        }
-        private static bool CheckCapacite(double capacite)
-        {
-            if (capacite < 2.0 || capacite > 10.0)
+            if (capacity <= 2.0 || capacity >= 10.0)
             {
                 return false;
             }

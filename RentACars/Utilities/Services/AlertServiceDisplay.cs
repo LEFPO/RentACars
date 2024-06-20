@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace RentACars.Utilities.Services
 {
+    /// <summary>
+    /// this class manage pop ups messages tested for a desktop windows app
+    /// </summary>
     public class AlertServiceDisplay : IAlertService
     {
         /// <summary>
@@ -26,6 +29,7 @@ namespace RentACars.Utilities.Services
         {
             return await Shell.Current.DisplayAlert(title, message, "Yes", "No");
         }
+
         /// <summary>
         /// show alert with a pop up display with a confirmation with personnel text accept and cancel
         /// </summary>
@@ -34,12 +38,11 @@ namespace RentACars.Utilities.Services
             return await Shell.Current.DisplayAlert(title, message, accept, cancel);
         }
         /// <summary>
-        /// show alert with a pop up display with a list of buttons (multiple  choices)
+        /// show alert with a pop up display with a list of buttons (multiple choices)
         /// </summary>
         public async Task<string> ShowQuestion(string title, params string[] buttons)
         {
-            return await Shell.Current.DisplayActionSheet(title, "Cancel", null,
-           buttons);
+            return await Shell.Current.DisplayActionSheet(title, "Cancel", null, buttons);
         }
         /// <summary>
         /// show alert with a pop up display with an entry box
@@ -58,5 +61,6 @@ namespace RentACars.Utilities.Services
             // Sinon, utilisez Application.Current.MainPage
             return Application.Current?.MainPage;
         }
+
     }
 }

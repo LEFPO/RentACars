@@ -20,24 +20,24 @@ namespace RentACars.Utilities.DataAccess
         /// <param name="dfm"></param>
         public DataAccessCsvFiles(DataFilesManager dfm) : base(dfm) { }
 
-        public static Vehicule GetVehicule(string csvline)
+        public static Vehicle GetVehicule(string csvline)
         {
             string[] fields = csvline.Split(';');
             switch (fields[0])
             {
             case "CARS":
-                return new Cars(immat: fields[1], marque: fields[2], model: fields[3], year: fields[4], dispo: bool.Parse(fields[5]), chassis: fields[6], carburant: fields[7], motorisation: fields[8], permisrequis: fields[9], couleur: fields[10], pictureName: fields[11]);
+                return new Car(id: int.Parse(fields[1]),picture_name: fields[2], brand: fields[3],model: fields[4], color: fields[5], plate: fields[6], available: bool.Parse(fields[7]), chassis_number: fields[8], motorization: fields[9], year_of_launch: fields[10], length: double.Parse(fields[11]), width: double.Parse(fields[12]), speed: int.Parse(fields[13]), fuel: fields[14],power: int.Parse(fields[15]), price_of_day: double.Parse(fields[16]), vat_rate: double.Parse(fields[17]), driver_license: fields[18]);
             case "TRUCKS":
-                return new Truck(immat: fields[1], marque: fields[2], model: fields[3], year: fields[4], dispo: bool.Parse(fields[5]), pictureName: fields[11], hauteur: double.Parse(fields[12]), largeur: double.Parse(fields[13]), longueur: double.Parse(fields[14]),capacite : double.Parse(fields[15]));
+                return new Truck(id: int.Parse(fields[1]), picture_name: fields[2], brand: fields[3], model: fields[4], color: fields[5], plate: fields[6], available: bool.Parse(fields[7]), chassis_number: fields[8], motorization: fields[9], year_of_launch: fields[10], length: double.Parse(fields[11]), width: double.Parse(fields[12]), speed: int.Parse(fields[13]), fuel: fields[14], power: int.Parse(fields[15]), price_of_day: double.Parse(fields[16]), vat_rat: double.Parse(fields[17]), height: double.Parse(fields[19]), capacity: double.Parse(fields[20]));
             default:
                 return null;
             }
         }
-        public override VehiculesCollection GetAllVehicules()
+        public override VehiclesCollection GetAllVehicles()
         {
             List<string> listToRead = new List<string>();
-            VehiculesCollection vehicule = new VehiculesCollection();
-            string temp = DataFilesManager.DataFiles.GetFilePathByCodeFunction("VEHICULE");
+            VehiclesCollection vehicule = new VehiclesCollection();
+            string temp = DataFilesManager.DataFiles.GetFilePathByCodeFunction("VEHICLE");
             
             AccessPath = temp;
             if (IsValidAccessPath)
@@ -47,7 +47,7 @@ namespace RentACars.Utilities.DataAccess
                 listToRead.RemoveAt(0);
                 foreach (string s in listToRead)
                 {
-                    Vehicule ve = GetVehicule(s);
+                    Vehicle ve = GetVehicule(s);
                     vehicule.AddItem(ve);
                 }
                 return vehicule;
@@ -59,6 +59,9 @@ namespace RentACars.Utilities.DataAccess
             }
         }
 
-        
+        public override bool UpdateVehicles(VehiclesCollection vehicle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

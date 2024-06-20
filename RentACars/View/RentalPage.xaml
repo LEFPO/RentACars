@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RentACars.View.RentalPage"
+             Title="RentalPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!-- Première colonne -->
+            <ColumnDefinition Width="*" />
+            <!-- Deuxième colonne -->
+            <ColumnDefinition Width="*" />
+            <!-- Troisième colonne -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Picker à gauche -->
+
+        <Picker Grid.Column="0" VerticalOptions="Start" Margin="10, 20, 10, 10"
+               ItemsSource="{Binding Vehicles}" 
+               ItemDisplayBinding ="{Binding Model}" 
+               SelectedItem="{Binding VehicleSelection}"
+               WidthRequest="250"
+               HorizontalOptions="Start"  
+         />
+
+
+        <!-- Labels et Textes au centre -->
+        <StackLayout Grid.Column="1" Margin="10">
+            <!-- Première paire Label et Text -->
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Marque :" WidthRequest="80" />
+                <Label Text="{Binding VehicleSelection.Brand}" />
+            </StackLayout>
+
+            <!-- Deuxième paire Label et Text -->
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Text="Model :" WidthRequest="80" />
+                <Label Text="{Binding VehicleSelection.Model}" />
+            </StackLayout>
+
+            <!-- Troisième paire Label et Text -->
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Text="Prix par jour :" WidthRequest="80" />
+                <Label Text="{Binding VehicleSelection.Price_of_day}" 
+                    />
+            </StackLayout>
+
+            <!-- Quatrième paire Label et Text -->
+            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Text="Permis Requis:" WidthRequest="80" />
+                <Label Text="{Binding VehicleSelection.Driver_licence}" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Récapitulatif à droite -->
+        <StackLayout Grid.Column="2" Margin="10">
+            <Label Text="Récapitulatif" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <StackLayout Margin="0,20,0,0">
+                <Label Text="Résumé 1:" />
+                <Label Text="Résumé 2:" />
+                <Label Text="Résumé 3:" />
+            </StackLayout>
+
+            <Entry Placeholder="Saisissez le résumé global" Margin="0,20,0,0" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

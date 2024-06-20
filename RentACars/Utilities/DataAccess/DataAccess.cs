@@ -39,6 +39,20 @@ namespace RentACars.Utilities.DataAccess
         {
             this.DataFilesManager = dfm;
         }
+
+
+        /// <summary>
+        /// Constructor associated with a DatafileManager object, it will contains all datas files informations (path subject)
+        /// </summary>
+        /// <param name="dfm"></param>
+        public DataAccess(DataFilesManager dfm, IAlertService alertService)
+        {
+
+            this.DataFilesManager = dfm;
+            this.alertService = alertService;
+        }
+
+        protected IAlertService alertService;
         public DataFilesManager DataFilesManager { get; set; }
         /// <summary>
         /// AccessPath file to the data source
@@ -60,8 +74,8 @@ namespace RentACars.Utilities.DataAccess
         /// Continue to check AccessPath even after constructor (in the case of the file may be moved, renamed or deleted)
         /// </summary>
         public bool IsValidAccessPath => CheckAccessPath(AccessPath);
-
-        public abstract VehiculesCollection GetAllVehicules();
+        public abstract VehiclesCollection GetAllVehicles();
+        public abstract bool UpdateVehicles(VehiclesCollection vehicle);
 
         /// <summary>
         /// Check AccessPath to the data source file. File path must exist and if
@@ -100,6 +114,5 @@ namespace RentACars.Utilities.DataAccess
                 return false;
             }
         }
-
     }//end class DataAccess
 }

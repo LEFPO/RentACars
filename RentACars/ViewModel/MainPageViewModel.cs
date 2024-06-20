@@ -16,28 +16,28 @@ namespace RentACars.ViewModel
         alertService) : base(alertService)
         {
             dataAccess = dataAccessService; // Instance qui vient du Singletone
-            Vehicules = dataAccess.GetAllVehicules(); //get user's collection datas from chosen DataAccessSource(excel, csv, json...).
+            Vehicles = dataAccess.GetAllVehicles(); //get user's collection datas from chosen DataAccessSource(excel, csv, json...).
             //Tables = DataAccess.GetTables(); //get table's collection datas from chosen DataAccessSource (excel, csv, json...).
         }
         /// <summary>
         /// Manager to the data access (Csv, Json, XAML, SQL...)
         /// </summary>
         private IDataAccess dataAccess;
-        public VehiculesCollection Vehicules { get; set; }
+        public VehiclesCollection Vehicles { get; set; }
 
         [ObservableProperty]
-        private Vehicule vehiculeUserSelection;
+        private Vehicle vehicleUserSelection;
 
 
         [RelayCommand()]
         private async void ShowItemDetails()
         {
-            if (VehiculeUserSelection != null)
+            if (VehicleUserSelection != null)
             {
-                await alertService.ShowAlert("Selection", $"Voitre choix :\n{ VehiculeUserSelection.Marque}, {VehiculeUserSelection.Model}\n " +
+                await alertService.ShowAlert("Selection", $"Voitre choix :\n{ VehicleUserSelection.Brand}, {VehicleUserSelection.Model}\n " +
            
 
-                $"{VehiculeUserSelection.Year}\n{VehiculeUserSelection.Dispo}\n{VehiculeUserSelection.Immat}.");
+                $"{VehicleUserSelection.Year_of_launch}\n{VehicleUserSelection.Available}\n{VehicleUserSelection.Plate}.");
             }
             else
             {

@@ -5,12 +5,14 @@ using RentACars.Utilities.Interfaces;
 using RentACars.Utilities.Services;
 using RentACars.View;
 using RentACars.ViewModel;
+using CommunityToolkit.Maui;
 
 namespace RentACars
 {
     public static class MauiProgram
     {
-        private const string CONFIG_FILE = @"C:\Users\Ai\source\repos\RentACars\RentACars\Configuration\Datas\ConfigJson.txt";
+        private const string CONFIG_FILE = @"C:\Users\Ai\source\repos\RentACars\RentACars\Configuration\Datas\ConfigSQL.txt";
+        
 
         public static MauiApp CreateMauiApp()
         {
@@ -21,9 +23,10 @@ namespace RentACars
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
-
+                })
+                .UseMauiCommunityToolkit();
             DataFilesManager dataFilesManager = new DataFilesManager(CONFIG_FILE);
+            AlertServiceDisplay alertService = new AlertServiceDisplay();
             /*
             Services.AddSingleton() permet de faire de l'injection de dépendance dans le 
             constructeur des ViewModel par exemple
@@ -36,14 +39,20 @@ namespace RentACars
             contient toutes les instances spécifiées dans les <> 
             */
 
-            //Singleton for AlertServiceDisplay 
+            //Singleton for AlertServiceDisplay
+            //dependency injection for AlertServiceDisplay 
             builder.Services.AddSingleton<IAlertService>(new AlertServiceDisplay());
-            builder.Services.AddSingleton<IDataAccess>(new
-            DataAccessJsonFile(dataFilesManager));
+            //builder.Services.AddSingleton<IDataAccess>(new DataAccessJsonFile(dataFilesManager, alertService));
+            builder.Services.AddSingleton<IDataAccess>(new DataAccessSql(dataFilesManager, alertService));
 
             //permet de faire de l'injection de dépendance dans le constructeur de la MainPage sans devoir faire un new MainPageViewModel() dans celui-ci
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<VehiclePageViewModel>();
+            builder.Services.AddTransient<VehiclePage>();
+            builder.Services.AddTransient<RentalPageViewModel>();
+            builder.Services.AddTransient<RentalPage>();
+
 
 #if DEBUG
             builder.Logging.AddDebug();

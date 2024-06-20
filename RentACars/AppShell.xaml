@@ -7,10 +7,18 @@
     xmlns:View="clr-namespace:RentACars.View"
     Shell.FlyoutBehavior="Disabled"
     Title="RentACars">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:View.MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <ShellContent
+            Title="Login"
+            ContentTemplate="{DataTemplate local:View.MainPage}"
+            Route="MainPage" />
+        <ShellContent
+            Title="Collection de Voiture"
+            Route="VehiclePage"
+            ContentTemplate="{DataTemplate View:VehiclePage}"/>
+        <ShellContent
+            Title="Location"
+            Route="RentalPage"
+            ContentTemplate="{DataTemplate View:RentalPage}"/>
+    </TabBar>
 </Shell>

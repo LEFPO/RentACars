@@ -1,5 +1,5 @@
-﻿using Brasserie.Model.Restaurant;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using RentACars.Model;
 using RentACars.Utilities.Interfaces;
 
 namespace RentACars.ViewModel

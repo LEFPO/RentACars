@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="RentACars.View.VehiclePage"
+             Title="VehiclePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter" />
+            <Style x:Key="ListViewStyle" TargetType="ListView">
+                <Setter Property="VerticalScrollBarVisibility" Value="Always" />
+                <!-- Autres setters pour le style si nécessaire -->
+            </Style>
+            <Style x:Key="BottomPageButton" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="WidthRequest" Value="250"/>
+                <Setter Property="BackgroundColor" Value="Grey"/>
+            </Style>
+        </ResourceDictionary>
+        <DataTemplate x:Key="ListViewItemTemplate">
+            <ViewCell>
+                <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0"
+                           Margin="10,0,0,0" 
+                           Text="{Binding Brand}"
+                           FontAttributes="Bold" />
+                    <Label Grid.Column="1" Grid.Row="0"
+                           Text="{Binding Model}"
+                           Margin="10,0,0,0" 
+                           FontAttributes="Italic"
+                           VerticalOptions="End" />
+                    <Label Grid.Row="1"
+                           Text="{Binding Chassis_number}"
+                           Margin="10,0,0,0" 
+                           FontAttributes="Italic"
+                           VerticalOptions="End" />
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Column="0" Grid.Row="0">
+                <Label Text="Nous sommes de nos véhicules ! "
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+                <Image Source="image_location.jpg"
+                       HeightRequest="250"
+                       Aspect="AspectFit" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Grid.Row="0">
+                <ListView ItemsSource="{Binding Vehicles}" 
+                          SelectedItem="{Binding VehicleSelection}" 
+                          Style="{StaticResource ListViewStyle}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0"
+                                           Margin="10,0,0,0" 
+                                           Text="{Binding Brand}"
+                                           FontAttributes="Bold" />
+                                    <Label Grid.Column="1" Grid.Row="0"
+                                           Text="{Binding Model}"
+                                           Margin="10,0,0,0" 
+                                           FontAttributes="Italic"
+                                           VerticalOptions="End" />
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Chassis_number}"
+                                           Margin="10,0,0,0" 
+                                           FontAttributes="Italic"
+                                           VerticalOptions="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <toolkit:EventToCommandBehavior EventName="ItemSelected"
+                                                        Command="{Binding SelectVehicleCommand}"
+                                                        EventArgsConverter="{StaticResource SelectedItemEventArgsConverter}" />
+                    </ListView.Behaviors>
+                </ListView>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="2" Grid.Row="0">
+                <Picker ItemsSource="{Binding Vehicles}"
+                        ItemDisplayBinding="{Binding Model}"
+                        SelectedItem="{Binding VehicleSelection}"
+                        WidthRequest="250"
+                        HorizontalOptions="Start" />
+                <Label Text="Marque :"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                <Entry Text="{Binding VehicleSelection.Brand}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       WidthRequest="250" />
+                <Label Text="Model :"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                <Entry Text="{Binding VehicleSelection.Model}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       WidthRequest="250" />
+                <Label Text="Couleur :"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                <Entry Text="{Binding VehicleSelection.Color}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       WidthRequest="250" />
+                <Label Text="Numéro de chassis :"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                <Entry Text="{Binding VehicleSelection.Chassis_number}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       WidthRequest="250" />
+                <Label Text="Louable :"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                <CheckBox IsChecked="{Binding VehicleSelection.Available}" />
+                <Label Text="Année de mise en circulation :"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                <Entry Text="{Binding VehicleSelection.Year_of_launch}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       WidthRequest="250" />
+                <Label Text="Plaque :"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                <Entry Text="{Binding VehicleSelection.Plate}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"
+                       WidthRequest="250" />
+            </VerticalStackLayout>
+
+            <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Center">
+                <Button Margin="0,10,0,0"
+                        Text="Sauver les données"
+                        Command="{Binding SaveDatasCommand}"
+                        VerticalOptions="Center"
+                        Style="{StaticResource BottomPageButton}" />
+                <Button Margin="10,10,0,0"
+                        Text="Nouveau Vehicule"
+                        Command="{Binding ShowNewVehiclePopupCommand}"
+                        VerticalOptions="Center"
+                        Style="{StaticResource BottomPageButton}" />
+            </HorizontalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>
