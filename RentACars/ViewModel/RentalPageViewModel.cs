@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RentACars.Auto;
 using RentACars.Utilities.Interfaces;
+using RentACars.Utilities.Services;
 using RentACars.View;
 
 namespace RentACars.ViewModel
@@ -27,5 +28,16 @@ namespace RentACars.ViewModel
         /// </summary>
         [ObservableProperty]
         private Vehicle vehicleSelection;
+        [RelayCommand()]
+        public async void PreviewPage()
+        {
+            await Shell.Current.GoToAsync("///VehiclePage");
+        }
+        [RelayCommand()]
+        public async void Comfirmed()
+        {
+            AlertServiceDisplay alertService = new AlertServiceDisplay();
+            await alertService.ShowAlert("Désoler", "Cette fonctionnalité est en cours de création");
+        }
     }//end clas
 }

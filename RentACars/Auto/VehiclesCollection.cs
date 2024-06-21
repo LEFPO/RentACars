@@ -88,6 +88,20 @@ namespace RentACars.Auto
                 return 1;
             }
         }
+        public bool RemoveVehicle(Vehicle ve)
+        {
+            if (this.Any(VehiculeInTheCollection => VehiculeInTheCollection.Id == ve.Id))
+            {
+                this.Remove(ve);
+                return true;
 
+            }
+            else
+            {
+                //if StaffMember not in the collection 
+                return false;
+            }
+
+        }
     }
 }

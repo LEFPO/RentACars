@@ -191,6 +191,7 @@ namespace RentACars.Auto
                     _length = value;
                     OnPropertyChanged(nameof(Length));
                 }
+                
             }
         }
         public double Width
@@ -206,6 +207,7 @@ namespace RentACars.Auto
                     _width = value;
                     OnPropertyChanged(nameof(Width));
                 }
+                
             }
         }
         public int Speed
@@ -315,7 +317,7 @@ namespace RentACars.Auto
 
         private static bool CheckLenght(double lenght)
         {
-            if (lenght <= 4.5 || lenght >= 6.5)
+            if (lenght <= 3.0 || lenght >= 10.0)
             {
                 return false;
             }
@@ -323,7 +325,7 @@ namespace RentACars.Auto
         }
         private static bool CheckWidth(double width)
         {
-            if (width <= 1.7 || width >= 2.0)
+            if (width <= 0.5 || width >= 5.0)
             {
                 return false;
             }

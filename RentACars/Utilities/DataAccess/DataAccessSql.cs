@@ -44,7 +44,7 @@ namespace RentACars.Utilities.DataAccess
             catch (Exception ex)
             {
                 AlertServiceDisplay alertService = new AlertServiceDisplay();
-                alertService.ShowAlert("Désoler", "Cette fonctionnalité est en cours de création");
+                alertService.ShowAlert("Désoler", "Vous avez entré un mauvais Login ou Password");
                 return false;
             }
         }
@@ -240,25 +240,25 @@ namespace RentACars.Utilities.DataAccess
                     if (ve is Car ca)
                     {
                         return $@"
-            UPDATE Vehicle 
-            SET Picture_name = '{ca.Picture_name}', 
-                Brand = '{ca.Brand}', 
-                Model = '{ca.Model}', 
-                Color = '{ca.Color}', 
-                Plate = '{ca.Plate}', 
-                Available = {BoolSqlConvert(ca.Available)}, 
-                Chassis_number = '{ca.Chassis_number}', 
-                Motorization = '{ca.Motorization}', 
-                Year_of_launch = '{ca.Year_of_launch}', 
-                Length = {ca.Length.ToString().Replace(',', '.')}, 
-                Width = {ca.Width.ToString().Replace(',', '.')}, 
-                Speed = {ca.Speed}, 
-                Fuel = '{ca.Fuel}', 
-                Power = {ca.Power}, 
-                Price_of_day = {ca.Price_of_day}, 
-                Vat_rate = {ca.Vat_rate}, 
-                Drive_license = '{ca.Driver_license}'
-            WHERE Id = {ca.Id};";
+                            UPDATE Vehicle 
+                            SET Picture_name = '{ca.Picture_name}', 
+                                Brand = '{ca.Brand}', 
+                                Model = '{ca.Model}', 
+                                Color = '{ca.Color}', 
+                                Plate = '{ca.Plate}', 
+                                Available = {BoolSqlConvert(ca.Available)}, 
+                                Chassis_number = '{ca.Chassis_number}', 
+                                Motorization = '{ca.Motorization}', 
+                                Year_of_launch = '{ca.Year_of_launch}', 
+                                Length = {ca.Length.ToString().Replace(',', '.')}, 
+                                Width = {ca.Width.ToString().Replace(',', '.')}, 
+                                Speed = {ca.Speed}, 
+                                Fuel = '{ca.Fuel}', 
+                                Power = {ca.Power}, 
+                                Price_of_day = {ca.Price_of_day}, 
+                                Vat_rate = {ca.Vat_rate}, 
+                                Drive_license = '{ca.Driver_license}'
+                            WHERE Id = {ca.Id};";
                     }
                     break;
 
@@ -266,26 +266,26 @@ namespace RentACars.Utilities.DataAccess
                     if (ve is Truck t)
                     {
                         return $@"
-            UPDATE Vehicle 
-            SET Picture_name = '{t.Picture_name}', 
-                Brand = '{t.Brand}', 
-                Model = '{t.Model}', 
-                Color = '{t.Color}', 
-                Plate = '{t.Plate}', 
-                Available = {BoolSqlConvert(t.Available)}, 
-                Chassis_number = '{t.Chassis_number}', 
-                Motorization = '{t.Motorization}', 
-                Year_of_launch = '{t.Year_of_launch}', 
-                Length = {t.Length.ToString().Replace(',', '.')}, 
-                Width = {t.Width.ToString().Replace(',', '.')}, 
-                Speed = {t.Speed}, 
-                Fuel = '{t.Fuel}', 
-                Power = {t.Power}, 
-                Price_of_day = {t.Price_of_day}, 
-                Vat_rate = {t.Vat_rate}, 
-                Height = {t.Height.ToString().Replace(',', '.')}, 
-                Capacity = {t.Capacity.ToString().Replace(',', '.')}
-            WHERE Id = {t.Id};";
+                            UPDATE Vehicle 
+                            SET Picture_name = '{t.Picture_name}', 
+                                Brand = '{t.Brand}', 
+                                Model = '{t.Model}', 
+                                Color = '{t.Color}', 
+                                Plate = '{t.Plate}', 
+                                Available = {BoolSqlConvert(t.Available)}, 
+                                Chassis_number = '{t.Chassis_number}', 
+                                Motorization = '{t.Motorization}', 
+                                Year_of_launch = '{t.Year_of_launch}', 
+                                Length = {t.Length.ToString().Replace(',', '.')}, 
+                                Width = {t.Width.ToString().Replace(',', '.')}, 
+                                Speed = {t.Speed}, 
+                                Fuel = '{t.Fuel}', 
+                                Power = {t.Power}, 
+                                Price_of_day = {t.Price_of_day}, 
+                                Vat_rate = {t.Vat_rate}, 
+                                Height = {t.Height.ToString().Replace(',', '.')}, 
+                                Capacity = {t.Capacity.ToString().Replace(',', '.')}
+                            WHERE Id = {t.Id};";
                     }
                     break;
 

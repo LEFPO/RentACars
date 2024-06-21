@@ -45,7 +45,7 @@ namespace RentACars.ViewModel
         {
             if (dataAccess.UpdateVehicles(Vehicles))
             {
-                alertService.ShowAlert("Sauvegarde", "Les données staff members ont bien été sauvegardées");
+                alertService.ShowAlert("Sauvegarde", "Les données véhicule ont bien été sauvegardées");
  }
             else
             {
@@ -79,7 +79,7 @@ namespace RentACars.ViewModel
         {
             if (Vehicles.AddVehicle(VehiclePopupDisplayed))
             {
-                alertService.ShowAlert("Ajout", "Le nouveau membre a bien été ajouté");
+                alertService.ShowAlert("Ajout", "Le nouveau véhicule a bien été ajouté");
             }
             else
             {
@@ -109,6 +109,30 @@ namespace RentACars.ViewModel
         {
             await Shell.Current.GoToAsync("///RentalPage");
         }
+
+        [RelayCommand]
+        public async void DeleteVehicle()
+        {
+            if (VehicleSelection != null)
+            {
+                if (await alertService.ShowConfirmation("Supprimer", "Etes-vous sur de vouloir supprimer la selection?"))
+                {
+                    if (Vehicles.RemoveVehicle(VehicleSelection))
+                    {
+                        alertService.ShowAlert("Supprimer", "Le membre a bien été supprimé");
+                    }
+                    else
+                    {
+                        alertService.ShowAlert("Supprimer Erreur", "Une erreur est survenue lors de la suppression");
+                    }
+                }
+                else
+                {
+                    alertService.ShowAlert("Erreur", "Vous n'avez selectionné personne");
+                }
+            }
+
+        }//end class
 
     }//end clas
 }

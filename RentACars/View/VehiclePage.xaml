@@ -144,8 +144,14 @@
                         VerticalOptions="Center"
                         Style="{StaticResource BottomPageButton}" />
                 <Button Margin="10,10,0,0"
+                        Text="Supprimer Vehicule"
+                        Command="{Binding DeleteVehicleCommand}"
+                        VerticalOptions="Center"
+                        Style="{StaticResource BottomPageButton}" />
+                <Button Margin="10,10,0,0"
                         Text="Louer" 
-                        Command="{Binding NextPageCommand}" />
+                        Command="{Binding NextPageCommand}"
+                        Style="{StaticResource BottomPageButton}"/>
             </HorizontalStackLayout>
         </Grid>
     </ScrollView>
