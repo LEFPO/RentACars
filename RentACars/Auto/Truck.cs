@@ -49,7 +49,7 @@ namespace RentACars.Auto
 
         private static bool CheckHeigth(double longueur)
         {
-            if (longueur <= 1.8 || longueur >= 2.2)
+            if (longueur <= 1.0 || longueur >= 15.0)
             {
                 return false;
             }
@@ -57,7 +57,7 @@ namespace RentACars.Auto
         }
         private static bool CheckCapacity(double capacity)
         {
-            if (capacity <= 2.0 || capacity >= 10.0)
+            if (capacity <= 1.0 || capacity >= 20.0)
             {
                 return false;
             }

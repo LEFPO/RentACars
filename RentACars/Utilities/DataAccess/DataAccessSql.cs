@@ -3,7 +3,6 @@ using RentACars.Auto;
 using RentACars.Utilities.DataAccess.Files;
 using RentACars.Utilities.Interfaces;
 using RentACars.Utilities.Services;
-using System.Diagnostics;
 
 
 namespace RentACars.Utilities.DataAccess
@@ -26,14 +25,14 @@ namespace RentACars.Utilities.DataAccess
         }
 
         public SqlConnection SqlConnection { get; set; }
-        
-        public override bool CheckLog (string log, string password)
+
+        public override bool CheckLog(string log, string password)
         {
             SqlConnection.Close();
             try
             {
-                
-                if(IsInDb(log,password))
+
+                if (IsInDb(log, password))
                 {
                     return true;
                 }
@@ -52,37 +51,39 @@ namespace RentACars.Utilities.DataAccess
 
         public override VehiclesCollection GetAllVehicles()
         {
-            SqlConnection.Close();
-            try
+            using (SqlConnection connection = new SqlConnection(AccessPath))
             {
-                VehiclesCollection vehicle = new VehiclesCollection();
-                string sql = "SELECT * FROM Vehicle;";
-
-                using (SqlCommand cmd = new SqlCommand(sql, SqlConnection))
+                try
                 {
-                    SqlConnection.Open();
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    connection.Open();
+                    VehiclesCollection vehicles = new VehiclesCollection();
+                    string sql = "SELECT * FROM Vehicle;";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
                     {
-                        while (dataReader.Read())
+                        using (SqlDataReader dataReader = cmd.ExecuteReader())
                         {
-                            Vehicle ve = GetVehicle(dataReader);
-                            if (ve != null)
+                            while (dataReader.Read())
                             {
-                                vehicle.Add(ve);
+                                Vehicle ve = GetVehicle(dataReader);
+                                if (ve != null)
+                                {
+                                    vehicles.Add(ve);
+                                }
                             }
                         }
                     }
-                    SqlConnection.Close();
-                }
 
-                return vehicle;
-            }
-            catch (Exception ex)
-            {
-                alertService.ShowAlert("Database Request Error", ex.Message);
-                return null;
+                    return vehicles;
+                }
+                catch (Exception ex)
+                {
+                    alertService.ShowAlert("Database Request Error", ex.Message);
+                    return null;
+                }
             }
         }
+
 
         //public override VehiclesCollection GetAllVehicles()
         //{
@@ -297,47 +298,18 @@ namespace RentACars.Utilities.DataAccess
 
         private string GetSqlInsertVehicle(Vehicle ve)
         {
-            // Get the type of the vehicle
-            string type = ve.GetType().Name;
+            string[] strType = ve.GetType().ToString().Split('.');
+            string type = strType[strType.Length - 1];
 
-            switch (type)
-            {
-                case nameof(Car):
-                    if (ve is Car ca)
-                    {
-                        return $@"
+            return $@"
             INSERT INTO Vehicle 
             (Type, Picture_name, Brand, Model, Color, Plate, Available, Chassis_number, Motorization, Year_of_launch, 
-             Length, Width, Speed, Fuel, Power, Price_of_day, Vat_rate, Drive_license)
+             Length, Width, Speed, Fuel, Power, Price_of_day, Vat_rate)
             VALUES 
-            ('{type}', '{ca.Picture_name}', '{ca.Brand}', '{ca.Model}', '{ca.Color}', '{ca.Plate}', 
-             {BoolSqlConvert(ca.Available)}, '{ca.Chassis_number}', '{ca.Motorization}', '{ca.Year_of_launch}', 
-             {ca.Length.ToString().Replace(',', '.')}, {ca.Width.ToString().Replace(',', '.')}, {ca.Speed}, '{ca.Fuel}', {ca.Power}, {ca.Price_of_day}, {ca.Vat_rate}, '{ca.Driver_license}');
+            ('Car', '{ve.Picture_name}', '{ve.Brand}', '{ve.Model}', '{ve.Color}', '{ve.Plate}', 
+             {BoolSqlConvert(ve.Available)}, '{ve.Chassis_number}', '{ve.Motorization}', '{ve.Year_of_launch}', 
+             {ve.Length.ToString().Replace(',', '.')}, {ve.Width.ToString().Replace(',', '.')}, {ve.Speed}, '{ve.Fuel}', {ve.Power}, {ve.Price_of_day}, {ve.Vat_rate});
             SELECT SCOPE_IDENTITY();";
-                    }
-                    break;
-
-                case nameof(Truck):
-                    if (ve is Truck t)
-                    {
-                        return $@"
-            INSERT INTO Vehicle 
-            (Type, Picture_name, Brand, Model, Color, Plate, Available, Chassis_number, Motorization, Year_of_launch, 
-             Length, Width, Speed, Fuel, Power, Price_of_day, Vat_rate, Height, Capacity)
-            VALUES 
-            ('{type}', '{t.Picture_name}', '{t.Brand}', '{t.Model}', '{t.Color}', '{t.Plate}', 
-             {BoolSqlConvert(t.Available)}, '{t.Chassis_number}', '{t.Motorization}', '{t.Year_of_launch}', 
-             {t.Length.ToString().Replace(',', '.')}, {t.Width.ToString().Replace(',', '.')}, {t.Speed}, '{t.Fuel}', {t.Power}, {t.Price_of_day}, {t.Vat_rate}, 
-             {t.Height.ToString().Replace(',', '.')}, {t.Capacity.ToString().Replace(',', '.')});
-            SELECT SCOPE_IDENTITY();";
-                    }
-                    break;
-
-                default:
-                    throw new InvalidOperationException("Unsupported vehicle type for SQL insert operation.");
-            }
-
-            return string.Empty;
         }
 
         private bool IsInDb(int idValue, string idColumnName, string tableName)
