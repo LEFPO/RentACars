@@ -310,7 +310,7 @@ namespace RentACars.Auto
 
         public void CalculatePrice()
         {
-            Price_global = Price_of_day * Quantity;
+            Price_global = ((Price_of_day * Quantity)*(1+(Vat_rate/100)));
         }
 
         private static bool CheckLenght(double lenght)

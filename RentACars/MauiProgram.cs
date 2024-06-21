@@ -11,7 +11,7 @@ namespace RentACars
 {
     public static class MauiProgram
     {
-        private const string CONFIG_FILE = @"C:\Users\lefeb\source\repos\RentACars\RentACars\Configuration\Datas\ConfigSQL.txt";
+        private const string CONFIG_FILE = @"C:\Users\Ai\Source\Repos\RentACars\RentACars\Configuration\Datas\ConfigSQL.txt";
         
 
         public static MauiApp CreateMauiApp()

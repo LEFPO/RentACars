@@ -230,111 +230,115 @@ namespace RentACars.Utilities.DataAccess
 
         private string GetSqlUpdateVehicle(Vehicle ve)
         {
-            string[] strType = ve.GetType().ToString().Split('.');
-            string type = strType[strType.Length - 1];
+            // Get the type of the vehicle
+            string type = ve.GetType().Name;
+
             switch (type)
             {
-                case "Car":
-                    Car ca = (Car)ve;
-                    return $@"UPDATE Vehicle 
-                    SET Picture_name = '{ve.Picture_name}', 
-                        Brand = '{ve.Brand}', 
-                        Model = '{ve.Model}', 
-                        Color = '{ve.Color}', 
-                        Plate = '{ve.Plate}', 
-                        Available = {BoolSqlConvert(ve.Available)}, 
-                        Chassis_number = '{ve.Chassis_number}', 
-                        Motorization = '{ve.Motorization}', 
-                        Year_of_launch = '{ve.Year_of_launch}', 
-                        Length = {ve.Length}, 
-                        Width = {ve.Width}, 
-                        Speed = {ve.Speed}, 
-                        Fuel = '{ve.Fuel}', 
-                        Power = {ve.Power}, 
-                        Price_of_day = {ve.Price_of_day}, 
-                        Vat_rate = {ve.Vat_rate},
-                        Drive_licence = '{ca.Driver_license}'
-                    WHERE Id = {ve.Id};";
+                case nameof(Car):
+                    if (ve is Car ca)
+                    {
+                        return $@"
+            UPDATE Vehicle 
+            SET Picture_name = '{ca.Picture_name}', 
+                Brand = '{ca.Brand}', 
+                Model = '{ca.Model}', 
+                Color = '{ca.Color}', 
+                Plate = '{ca.Plate}', 
+                Available = {BoolSqlConvert(ca.Available)}, 
+                Chassis_number = '{ca.Chassis_number}', 
+                Motorization = '{ca.Motorization}', 
+                Year_of_launch = '{ca.Year_of_launch}', 
+                Length = {ca.Length.ToString().Replace(',', '.')}, 
+                Width = {ca.Width.ToString().Replace(',', '.')}, 
+                Speed = {ca.Speed}, 
+                Fuel = '{ca.Fuel}', 
+                Power = {ca.Power}, 
+                Price_of_day = {ca.Price_of_day}, 
+                Vat_rate = {ca.Vat_rate}, 
+                Drive_license = '{ca.Driver_license}'
+            WHERE Id = {ca.Id};";
+                    }
+                    break;
 
-                case "Truck":
-                    Truck t = (Truck)ve;
-                    return $@"UPDATE Vehicle 
-                  SET Picture_name = '{ve.Picture_name}', 
-                      Brand = '{ve.Brand}', 
-                      Model = '{ve.Model}', 
-                      Color = '{ve.Color}', 
-                      Plate = '{ve.Plate}', 
-                      Available = {BoolSqlConvert(ve.Available)}, 
-                      Chassis_number = '{ve.Chassis_number}', 
-                      Motorization = '{ve.Motorization}', 
-                      Year_of_launch = '{ve.Year_of_launch}', 
-                      Length = {ve.Length}, 
-                      Width = {ve.Width}, 
-                      Speed = {ve.Speed}, 
-                      Fuel = '{ve.Fuel}', 
-                      Power = {ve.Power}, 
-                      Price_of_day = {ve.Price_of_day}, 
-                      Vat_rate = {ve.Vat_rate}, 
-                      Height = {t.Height}, 
-                      Capacity = {t.Capacity}
-                  WHERE Id = {ve.Id}";
+                case nameof(Truck):
+                    if (ve is Truck t)
+                    {
+                        return $@"
+            UPDATE Vehicle 
+            SET Picture_name = '{t.Picture_name}', 
+                Brand = '{t.Brand}', 
+                Model = '{t.Model}', 
+                Color = '{t.Color}', 
+                Plate = '{t.Plate}', 
+                Available = {BoolSqlConvert(t.Available)}, 
+                Chassis_number = '{t.Chassis_number}', 
+                Motorization = '{t.Motorization}', 
+                Year_of_launch = '{t.Year_of_launch}', 
+                Length = {t.Length.ToString().Replace(',', '.')}, 
+                Width = {t.Width.ToString().Replace(',', '.')}, 
+                Speed = {t.Speed}, 
+                Fuel = '{t.Fuel}', 
+                Power = {t.Power}, 
+                Price_of_day = {t.Price_of_day}, 
+                Vat_rate = {t.Vat_rate}, 
+                Height = {t.Height.ToString().Replace(',', '.')}, 
+                Capacity = {t.Capacity.ToString().Replace(',', '.')}
+            WHERE Id = {t.Id};";
+                    }
+                    break;
 
                 default:
-                    return null;
+                    throw new InvalidOperationException("Unsupported vehicle type for SQL update operation.");
             }
+
+            return string.Empty;
         }
-
-
-
-
 
         private string GetSqlInsertVehicle(Vehicle ve)
         {
-            string[] strType = ve.GetType().ToString().Split('.');
-            string type = strType[strType.Length - 1];
+            // Get the type of the vehicle
+            string type = ve.GetType().Name;
 
-            // Log the type
-            Debug.WriteLine($"Vehicle type: {type}");
-
-            if (ve is Car ca)
+            switch (type)
             {
-                // If ve is of type Cars, cast it to Cars and proceed with the SQL statement
-                return $@"
+                case nameof(Car):
+                    if (ve is Car ca)
+                    {
+                        return $@"
             INSERT INTO Vehicle 
             (Type, Picture_name, Brand, Model, Color, Plate, Available, Chassis_number, Motorization, Year_of_launch, 
-             Length, Width, Speed, Fuel, Power, Price_of_day, Vat_rate, Drive_licence)
+             Length, Width, Speed, Fuel, Power, Price_of_day, Vat_rate, Drive_license)
             VALUES 
-            ('{type}', '{ve.Picture_name}', '{ve.Brand}', '{ve.Model}', '{ve.Color}', '{ve.Plate}', 
-             {BoolSqlConvert(ve.Available)}, '{ve.Chassis_number}', '{ve.Motorization}', '{ve.Year_of_launch}', 
-             {ve.Length}, {ve.Width}, {ve.Speed}, '{ve.Fuel}', {ve.Power}, {ve.Price_of_day}, {ve.Vat_rate}, '{ca.Driver_license}');
+            ('{type}', '{ca.Picture_name}', '{ca.Brand}', '{ca.Model}', '{ca.Color}', '{ca.Plate}', 
+             {BoolSqlConvert(ca.Available)}, '{ca.Chassis_number}', '{ca.Motorization}', '{ca.Year_of_launch}', 
+             {ca.Length.ToString().Replace(',', '.')}, {ca.Width.ToString().Replace(',', '.')}, {ca.Speed}, '{ca.Fuel}', {ca.Power}, {ca.Price_of_day}, {ca.Vat_rate}, '{ca.Driver_license}');
             SELECT SCOPE_IDENTITY();";
-            }
-            else if (ve is Truck t)
-            {
-                // If ve is of type Truck, cast it to Truck and proceed with the SQL statement
-                return $@"
+                    }
+                    break;
+
+                case nameof(Truck):
+                    if (ve is Truck t)
+                    {
+                        return $@"
             INSERT INTO Vehicle 
             (Type, Picture_name, Brand, Model, Color, Plate, Available, Chassis_number, Motorization, Year_of_launch, 
              Length, Width, Speed, Fuel, Power, Price_of_day, Vat_rate, Height, Capacity)
             VALUES 
-            ('{type}', '{ve.Picture_name}', '{ve.Brand}', '{ve.Model}', '{ve.Color}', '{ve.Plate}', 
-             {BoolSqlConvert(ve.Available)}, '{ve.Chassis_number}', '{ve.Motorization}', '{ve.Year_of_launch}', 
-             {ve.Length}, {ve.Width}, {ve.Speed}, '{ve.Fuel}', {ve.Power}, {ve.Price_of_day}, {ve.Vat_rate}, 
-             {t.Height}, {t.Capacity});
+            ('{type}', '{t.Picture_name}', '{t.Brand}', '{t.Model}', '{t.Color}', '{t.Plate}', 
+             {BoolSqlConvert(t.Available)}, '{t.Chassis_number}', '{t.Motorization}', '{t.Year_of_launch}', 
+             {t.Length.ToString().Replace(',', '.')}, {t.Width.ToString().Replace(',', '.')}, {t.Speed}, '{t.Fuel}', {t.Power}, {t.Price_of_day}, {t.Vat_rate}, 
+             {t.Height.ToString().Replace(',', '.')}, {t.Capacity.ToString().Replace(',', '.')});
             SELECT SCOPE_IDENTITY();";
+                    }
+                    break;
+
+                default:
+                    throw new InvalidOperationException("Unsupported vehicle type for SQL insert operation.");
             }
-            else
-            {
-                // Log an error message if the type is not recognized
-                Debug.WriteLine($"Unrecognized vehicle type: {type}");
-                return null;
-            }
+
+            return string.Empty;
         }
-
-
-
-
-
 
         private bool IsInDb(int idValue, string idColumnName, string tableName)
         {
