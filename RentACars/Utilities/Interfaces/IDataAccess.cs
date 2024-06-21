@@ -26,5 +26,7 @@ namespace RentACars.Utilities.Interfaces
         
         bool UpdateVehicles(VehiclesCollection vehicle);
 
+        bool CheckLog(string log, string password);
+
     }
 }

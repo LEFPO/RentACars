@@ -77,6 +77,8 @@ namespace RentACars.Utilities.DataAccess
         public abstract VehiclesCollection GetAllVehicles();
         public abstract bool UpdateVehicles(VehiclesCollection vehicle);
 
+        public abstract bool CheckLog(string log, string password);
+
         /// <summary>
         /// Check AccessPath to the data source file. File path must exist and if
         /// extensions are specified, the extension file must match to one of them

@@ -95,6 +95,11 @@ namespace RentACars.Utilities.DataAccess
                 return false;
             }
         }
+
+        public override bool CheckLog(string log, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

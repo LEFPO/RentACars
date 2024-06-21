@@ -75,7 +75,7 @@ namespace RentACars.ViewModel
         /// Command binded to the "Add new Member" button in the pop up display
         /// </summary>
         [RelayCommand()]
-        public void AddNewSVehicle()
+        public void AddNewVehicle()
         {
             if (Vehicles.AddVehicle(VehiclePopupDisplayed))
             {
@@ -104,6 +104,12 @@ namespace RentACars.ViewModel
             //show the popup on screen
             Shell.Current.CurrentPage.ShowPopup(popup);
         }
+        [RelayCommand]
+        public async void NextPage()
+        {
+            await Shell.Current.GoToAsync("///RentalPage");
+        }
+
     }//end clas
 }
 

@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="RentACars.View.VehiclePage"
-             Title="VehiclePage">
+             x:Class="RentACars.View.VehiclePage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter" />
@@ -18,87 +17,55 @@
                 <Setter Property="BackgroundColor" Value="Grey"/>
             </Style>
         </ResourceDictionary>
-        <DataTemplate x:Key="ListViewItemTemplate">
-            <ViewCell>
-                <Grid Padding="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Grid.Row="0"
-                           Margin="10,0,0,0" 
-                           Text="{Binding Brand}"
-                           FontAttributes="Bold" />
-                    <Label Grid.Column="1" Grid.Row="0"
-                           Text="{Binding Model}"
-                           Margin="10,0,0,0" 
-                           FontAttributes="Italic"
-                           VerticalOptions="End" />
-                    <Label Grid.Row="1"
-                           Text="{Binding Chassis_number}"
-                           Margin="10,0,0,0" 
-                           FontAttributes="Italic"
-                           VerticalOptions="End" />
-                </Grid>
-            </ViewCell>
-        </DataTemplate>
     </ContentPage.Resources>
     <ScrollView>
-        <Grid Margin="0,20,0,20">
+        <Grid Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="4*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <VerticalStackLayout Grid.Column="0" Grid.Row="0">
-                <Label Text="Nous sommes de nos véhicules ! "
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center" />
-                <Image Source="image_location.jpg"
-                       HeightRequest="250"
-                       Aspect="AspectFit" />
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Grid.Column="1" Grid.Row="0">
+            <!-- Colonne à gauche pour la liste des véhicules -->
+            <VerticalStackLayout Grid.Column="0" Grid.Row="0"
+                                 HorizontalOptions="Center">
                 <ListView ItemsSource="{Binding Vehicles}" 
                           SelectedItem="{Binding VehicleSelection}" 
                           Style="{StaticResource ListViewStyle}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Padding="5">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Grid.Row="0"
-                                           Margin="10,0,0,0" 
-                                           Text="{Binding Brand}"
-                                           FontAttributes="Bold" />
-                                    <Label Grid.Column="1" Grid.Row="0"
-                                           Text="{Binding Model}"
-                                           Margin="10,0,0,0" 
-                                           FontAttributes="Italic"
-                                           VerticalOptions="End" />
-                                    <Label Grid.Row="1"
-                                           Text="{Binding Chassis_number}"
-                                           Margin="10,0,0,0" 
-                                           FontAttributes="Italic"
-                                           VerticalOptions="End" />
-                                </Grid>
+                                <StackLayout Padding="5">
+                                    <HorizontalStackLayout>
+                                        <Label Text="{Binding Brand}"
+                                               FontAttributes="Bold"
+                                               Margin="10,0,0,0" />
+                                        <Label Text="{Binding Model}"
+                                               FontAttributes="Italic"
+                                               Margin="10,0,0,0" />
+                                        <Label Text="{Binding Chassis_number}"
+                                               FontAttributes="Italic"
+                                               Margin="10,0,0,0" />
+                                    </HorizontalStackLayout>
+
+                                    <!-- Nouvelles étiquettes pour afficher les informations supplémentaires -->
+                                    <HorizontalStackLayout>
+                                        <Label Text="Disponible :"
+                                               Margin="10,0,0,0" />
+                                        <CheckBox IsChecked="{Binding Available}"
+                                                  IsEnabled="False"
+                                                  Margin="10,0,0,0" />
+
+                                        <Label Text="Prix par jour :"
+                                               Margin="10,0,0,0" />
+                                        <Label Text="{Binding Price_of_day, StringFormat='{0} €'}"
+                                               FontAttributes="Italic"
+                                               Margin="10,0,0,0" />
+                                    </HorizontalStackLayout>
+                                </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -110,12 +77,12 @@
                 </ListView>
             </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Column="2" Grid.Row="0">
-                <Picker ItemsSource="{Binding Vehicles}"
-                        ItemDisplayBinding="{Binding Model}"
-                        SelectedItem="{Binding VehicleSelection}"
-                        WidthRequest="250"
-                        HorizontalOptions="Start" />
+            <!-- Colonne à droite pour les détails du véhicule sélectionné -->
+            <VerticalStackLayout Grid.Column="1" Grid.Row="0" Margin="20,0,0,0"
+                                 HorizontalOptions="Center">
+                <Label Text="Détails du véhicule sélectionné"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
                 <Label Text="Marque :"
                        VerticalOptions="Center"
                        HorizontalOptions="Start" />
@@ -164,7 +131,8 @@
                        WidthRequest="250" />
             </VerticalStackLayout>
 
-            <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="Center">
+            <!-- Boutons en bas de page -->
+            <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Center">
                 <Button Margin="0,10,0,0"
                         Text="Sauver les données"
                         Command="{Binding SaveDatasCommand}"
@@ -175,6 +143,9 @@
                         Command="{Binding ShowNewVehiclePopupCommand}"
                         VerticalOptions="Center"
                         Style="{StaticResource BottomPageButton}" />
+                <Button Margin="10,10,0,0"
+                        Text="Louer" 
+                        Command="{Binding NextPageCommand}" />
             </HorizontalStackLayout>
         </Grid>
     </ScrollView>

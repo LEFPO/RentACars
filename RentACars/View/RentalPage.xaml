@@ -57,12 +57,17 @@
             <Label Text="Récapitulatif" FontAttributes="Bold" HorizontalOptions="Center" />
 
             <StackLayout Margin="0,20,0,0">
-                <Label Text="Résumé 1:" />
-                <Label Text="Résumé 2:" />
-                <Label Text="Résumé 3:" />
+                <Label Text="Model:" />
+                <Label Text="{Binding VehicleSelection.Model}"/>
+                <Label Text="Prix par jour:" />
+                <Label Text="{Binding VehicleSelection.Price_of_day}"/>
+                <Label Text="Nombre de jour:" />
+                <Entry Text="{Binding VehicleSelection.Quantity}"/>
+                <Label Text="Prix total TVAC de la location:"/>
+                <Label Text="{Binding VehicleSelection.Price_global}"/>
             </StackLayout>
 
-            <Entry Placeholder="Saisissez le résumé global" Margin="0,20,0,0" />
+            
         </StackLayout>
     </Grid>
 </ContentPage>

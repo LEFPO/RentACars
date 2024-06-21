@@ -49,7 +49,7 @@ namespace RentACars.Auto
 
         public bool AddVehicle(Vehicle ve)
         {
-            if (this.Count == 0 || !this.Any(VehiculeInTheCollection => VehiculeInTheCollection.Id == ve.Id || (VehiculeInTheCollection.Chassis_number ==ve.Chassis_number)))
+            if (!this.Any(orderInTheCollection => orderInTheCollection.Id == ve.Id))
             {
                 this.Add(ve);
                 return true;
@@ -67,9 +67,21 @@ namespace RentACars.Auto
         /// <returns></returns>
         public int GetNextId()
         {
-            if (this != null && this.Count > 1)
+            if (Count > 1)
             {
-                return this.Max(ve => ve.Id) + 1;
+                int maxId = this[0].Id;
+                foreach (var patient in this)
+                {
+                    if (patient.Id > maxId)
+                    {
+                        maxId = patient.Id;
+                    }
+                }
+                return maxId + 1;
+            }
+            else if (Count == 1)
+            {
+                return this[0].Id + 1;
             }
             else
             {

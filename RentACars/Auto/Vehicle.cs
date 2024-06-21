@@ -29,6 +29,8 @@ namespace RentACars.Auto
         private int _power;
         private double _price_of_day;
         private double _vat_rate;
+        private double _price_global;
+        private int _quantity = 1 ;
 
         public Vehicle(int id, string picture_name, string brand, string model, string color, string plate, bool available, string chassis_number, string motorization, string year_of_launch, double length, double width, int speed, string fuel, int power, double price_of_day, double vat_rate)
         {
@@ -278,6 +280,37 @@ namespace RentACars.Auto
             {
                 _vat_rate = value;
             }
+        }
+        public double Price_global
+        {
+            get
+            {
+                return _price_global;
+            }
+            set
+            {
+                _price_global = value;
+                OnPropertyChanged(nameof(Price_global));
+            }
+        }
+        public int Quantity
+        {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+                _quantity = value;
+                CalculatePrice();
+                OnPropertyChanged(nameof(Quantity));
+            }
+        }
+
+
+        public void CalculatePrice()
+        {
+            Price_global = Price_of_day * Quantity;
         }
 
         private static bool CheckLenght(double lenght)

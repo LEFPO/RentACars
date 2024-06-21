@@ -1,7 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Maui.Controls;
 using RentACars.Auto;
+using RentACars.Utilities.DataAccess;
 using RentACars.Utilities.Interfaces;
+using RentACars.Utilities.Services;
+using RentACars.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +32,12 @@ namespace RentACars.ViewModel
 
         [ObservableProperty]
         private Vehicle vehicleUserSelection;
+
+        [ObservableProperty]
+        public string log;
+
+        [ObservableProperty]
+        public string pass;
 
 
         [RelayCommand()]
@@ -60,6 +71,35 @@ namespace RentACars.ViewModel
             MainInfos.Address = "10, rue de l'étang 7000 Mons";
             MainInfos.WebSite = "http://RentACars.com";
             MainInfos.VatCode = "BE 0202.239.951";
+        }
+
+        [RelayCommand]
+        public void NextPage()
+        {
+            if (!Log.IsNullOrEmpty() && !Pass.IsNullOrEmpty())
+            {
+                if (dataAccess.CheckLog(Log, Pass))
+                {
+                    Shell.Current.GoToAsync("///VehiclePage");
+                }
+                else
+                {
+                    AlertServiceDisplay alertService = new AlertServiceDisplay();
+                    alertService.ShowAlert("Désoler", "Les données que vous avez entré son incorrect");
+                }
+            }else
+            {
+                AlertServiceDisplay alertService = new AlertServiceDisplay();
+                alertService.ShowAlert("Désoler", "Rentrer des données");
+            }
+       
+        }
+
+        [RelayCommand()]
+        private async void NewCompte()
+        {
+            AlertServiceDisplay alertService = new AlertServiceDisplay();
+            await alertService.ShowAlert("Désoler", "Cette fonctionnalité est en cours de création");
         }
     }
 }

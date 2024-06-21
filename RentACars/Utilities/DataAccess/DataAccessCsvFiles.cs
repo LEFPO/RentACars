@@ -33,6 +33,12 @@ namespace RentACars.Utilities.DataAccess
                 return null;
             }
         }
+
+        public override bool CheckLog(string log, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public override VehiclesCollection GetAllVehicles()
         {
             List<string> listToRead = new List<string>();

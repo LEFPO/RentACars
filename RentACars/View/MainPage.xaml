@@ -2,31 +2,29 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RentACars.View.MainPage">
-    <VerticalStackLayout Padding="20" Spacing="20">
-        <Label
-                    x:Name="lblDebug"
-                    Text="debug Text"
-                />
+    <VerticalStackLayout Padding="20" Spacing="20"
+                         VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+        <!--Image-->
+        <Image Source="image_location.jpg" HeightRequest="250" Aspect="AspectFit" />
+
         <!-- Identifiant -->
-        <Label Text="Identifiant:" VerticalOptions="Center" />
-        <Entry x:Name="UsernameEntry" Placeholder="Entrez votre identifiant" />
+        <Label Text="Identifiant:" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Entry Text="{Binding Log}" Placeholder="Entrez votre identifiant" VerticalOptions="Center" HorizontalOptions="Center" />
 
         <!-- Mot de Passe -->
-        <Label Text="Mot de passe:" VerticalOptions="Center" />
-        <Entry x:Name="PasswordEntry" Placeholder="Entrez votre mot de passe" IsPassword="True" />
+        <Label Text="Mot de passe:" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Entry Text="{Binding Pass}" Placeholder="Entrez votre mot de passe" IsPassword="True" VerticalOptions="Center" HorizontalOptions="Center" />
 
         <!-- Se souvenir de moi -->
-        <HorizontalStackLayout>
-            <CheckBox x:Name="RememberMeCheckBox" />
-            <Label Text="Se souvenir de moi" VerticalOptions="Center" />
+        <HorizontalStackLayout Spacing="10" VerticalOptions="Center" HorizontalOptions="Center">
+            <CheckBox x:Name="RememberMeCheckBox" VerticalOptions="Center" />
+            <Label Text="Se souvenir de moi" VerticalOptions="Center"  />
         </HorizontalStackLayout>
 
         <!-- Boutons -->
-        <HorizontalStackLayout HorizontalOptions="Center">
-            <Button Text="Se connecter" />
-            <Button Text="Créer un compte"  />
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="20">
+            <Button Text="Se connecter" Command="{Binding NextPageCommand}" />
+            <Button Text="Créer un compte" Command="{Binding NewCompteCommand}" />
         </HorizontalStackLayout>
-
     </VerticalStackLayout>
-
 </ContentPage>
